@@ -32,11 +32,35 @@
           <a class="text-link" href="#trabajos">Explorar trabajos <span>↘</span></a>
         </div>
       </div>
-      <div class="hero-art" aria-label="Espacio reservado para una imagen representativa de tu trabajo" role="img">
-        <div class="art-grain"></div>
-        <span class="art-label">Imagen de portada<br>por añadir</span>
-        <span class="art-index">01 / 01</span>
-      </div>
+      <section class="highlights-carousel" data-carousel role="region" aria-roledescription="carrusel" aria-label="Trabajos destacados" tabindex="0">
+        <div class="highlight-viewport">
+          <article class="highlight-slide image-one" role="group" aria-roledescription="diapositiva" aria-label="1 de 3">
+            <div class="highlight-shade"></div><span class="highlight-count">01 <i>/ 03</i></span>
+            <div class="highlight-caption"><p>Destacado · cortometraje</p><h2>Título de tu trabajo</h2><a href="#trabajos">Ver trabajos <span>↗</span></a></div>
+          </article>
+          <article class="highlight-slide image-two" role="group" aria-roledescription="diapositiva" aria-label="2 de 3" hidden>
+            <div class="highlight-shade"></div><span class="highlight-count">02 <i>/ 03</i></span>
+            <div class="highlight-caption"><p>Destacado · videoclip</p><h2>Título de tu trabajo</h2><a href="#trabajos">Ver trabajos <span>↗</span></a></div>
+          </article>
+          <article class="highlight-slide image-three" role="group" aria-roledescription="diapositiva" aria-label="3 de 3" hidden>
+            <div class="highlight-shade"></div><span class="highlight-count">03 <i>/ 03</i></span>
+            <div class="highlight-caption"><p>Destacado · pieza visual</p><h2>Título de tu trabajo</h2><a href="#trabajos">Ver trabajos <span>↗</span></a></div>
+          </article>
+        </div>
+        <div class="highlight-controls">
+          <span class="highlight-label">Selección de trabajos</span>
+          <div class="highlight-buttons">
+            <button type="button" data-previous aria-label="Ver trabajo anterior">←</button>
+            <div class="highlight-dots" aria-label="Elegir trabajo destacado">
+              <button type="button" data-slide-to="0" aria-label="Ver destacado 1" aria-current="true"></button>
+              <button type="button" data-slide-to="1" aria-label="Ver destacado 2"></button>
+              <button type="button" data-slide-to="2" aria-label="Ver destacado 3"></button>
+            </div>
+            <button type="button" data-next aria-label="Ver trabajo siguiente">→</button>
+          </div>
+        </div>
+        <p class="carousel-hint">Usa las flechas o el teclado para explorar</p>
+      </section>
       <div class="hero-meta"><span>Madrid, España</span><span>Realización · Montaje · Imagen</span></div>
     </section>
 
@@ -86,6 +110,7 @@
     </section>
   </main>
 
+  <script src="app.js" defer></script>
   <footer class="site-footer"><a class="wordmark" href="#inicio">NA<span>®</span></a><span>© 2026 Nombre Apellido</span><a href="#inicio">Volver arriba ↑</a></footer>
 </body>
 </html>
