@@ -28,3 +28,8 @@ nav{display:flex;gap:34px;font-size:12px;color:#ffffff}nav a:hover,.site-footer 
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.project-card{position:relative;transition:transform .28s ease;transform-origin:center}.project-card:hover{z-index:2;transform:scale(1.035)}}
 
 .project-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000000}
+
+/* Panóptico centrado en su propia fila, al mismo tamaño que las demás tarjetas. */
+.video-grid .project-card.project-card-panoptico{grid-column:1/-1;width:50%;justify-self:center}
+.video-grid .project-card.project-card-panoptico .project-image{height:clamp(210px,24vw,360px)}
+@media(max-width:700px){.video-grid .project-card.project-card-panoptico{grid-column:auto;width:100%}.video-grid .project-card.project-card-panoptico .project-image{height:clamp(220px,64vw,360px)}}
