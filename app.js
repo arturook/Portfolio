@@ -22,3 +22,33 @@
   window.addEventListener("resize", onScroll);
   updateReel();
 })();
+
+(() => {
+  document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+    const track = carousel.querySelector("[data-carousel-track]");
+    const slides = Array.from(track.querySelectorAll(".niebla-slide"));
+    const previous = carousel.querySelector("[data-carousel-previous]");
+    const next = carousel.querySelector("[data-carousel-next]");
+    const current = carousel.querySelector("[data-carousel-current]");
+    if (!track || !slides.length || !previous || !next || !current) return;
+
+    const update = () => {
+      const index = Math.min(slides.length - 1, Math.max(0, Math.round(track.scrollLeft / track.clientWidth)));
+      current.textContent = String(index + 1).padStart(2, "0");
+      previous.disabled = index === 0;
+      next.disabled = index === slides.length - 1;
+    };
+    const move = (direction) => {
+      track.scrollBy({
+        left: direction * track.clientWidth,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      });
+    };
+
+    previous.addEventListener("click", () => move(-1));
+    next.addEventListener("click", () => move(1));
+    track.addEventListener("scroll", () => window.requestAnimationFrame(update), { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+})();
