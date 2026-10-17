@@ -21,3 +21,8 @@ nav{display:flex;gap:34px;font-size:12px;color:#ffffff}nav a:hover,.site-footer 
 .category-grid .project-image,.category-grid .project-card:first-child .project-image{height:clamp(210px,24vw,360px)}
 .category-grid .project-info h3{font-size:16px}
 @media(max-width:700px){.work-category+.work-category{margin-top:52px}.category-grid .project-image,.category-grid .project-card:first-child .project-image{height:clamp(220px,64vw,360px)}}
+
+.video-grid .project-card-panoptico{grid-column:1/-1;width:64%;justify-self:center}
+.video-grid .project-card-panoptico .project-image{height:clamp(190px,21vw,280px)}
+@media(max-width:700px){.video-grid .project-card-panoptico{grid-column:auto;width:100%}.video-grid .project-card-panoptico .project-image{height:clamp(220px,64vw,360px)}}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.project-card{position:relative;transition:transform .28s ease;transform-origin:center}.project-card:hover{z-index:2;transform:scale(1.035)}}
