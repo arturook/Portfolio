@@ -52,3 +52,49 @@
     update();
   });
 })();
+
+
+(() => {
+  const dialog = document.querySelector("[data-lightbox]");
+  const openers = Array.from(document.querySelectorAll("[data-lightbox-open]"));
+  if (!dialog || !openers.length) return;
+
+  const image = dialog.querySelector("[data-lightbox-image]");
+  const caption = dialog.querySelector("[data-lightbox-caption]");
+  const count = dialog.querySelector("[data-lightbox-count]");
+  const close = dialog.querySelector("[data-lightbox-close]");
+  const previous = dialog.querySelector("[data-lightbox-previous]");
+  const next = dialog.querySelector("[data-lightbox-next]");
+  let index = 0;
+
+  const showPhoto = (nextIndex) => {
+    index = (nextIndex + openers.length) % openers.length;
+    const source = openers[index].querySelector("img");
+    image.src = source.currentSrc || source.src;
+    image.alt = source.alt;
+    caption.textContent = source.alt;
+    count.textContent = String(index + 1).padStart(2, "0") + " / " + String(openers.length).padStart(2, "0");
+  };
+
+  openers.forEach((button, buttonIndex) => {
+    button.addEventListener("click", () => {
+      showPhoto(buttonIndex);
+      dialog.showModal();
+    });
+  });
+  close.addEventListener("click", () => dialog.close());
+  previous.addEventListener("click", () => showPhoto(index - 1));
+  next.addEventListener("click", () => showPhoto(index + 1));
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showPhoto(index - 1);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showPhoto(index + 1);
+    }
+  });
+})();
