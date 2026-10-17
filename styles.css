@@ -83,10 +83,10 @@ nav{display:flex;gap:34px;font-size:12px;color:#ffffff}nav a:hover,.site-footer 
 
 
 /* La navegación se superpone al borde inferior de la portada y queda fija al seguir bajando. */
-.site-header{margin-top:-76px;background:#000000a6}
-.scroll-cue{position:absolute;z-index:3;left:50%;bottom:104px;display:grid;place-items:center;width:42px;height:42px;transform:translateX(-50%);border:1px solid #ffffffa6;border-radius:50%;color:#fff;font:22px/1 var(--sans);text-decoration:none;animation:scroll-cue-bob 1.7s ease-in-out infinite}
+.site-header{margin-top:0;background:#000000f2}
+.scroll-cue{position:absolute;z-index:3;left:50%;bottom:30px;display:grid;place-items:center;width:42px;height:42px;transform:translateX(-50%);border:1px solid #ffffffa6;border-radius:50%;color:#fff;font:22px/1 var(--sans);text-decoration:none;animation:scroll-cue-bob 1.7s ease-in-out infinite}
 .scroll-cue span{display:block;color:var(--red);transform:translateY(-1px)}
 .scroll-cue:focus-visible{outline:2px solid #fff;outline-offset:4px}
 @keyframes scroll-cue-bob{0%,100%{translate:0 0}50%{translate:0 7px}}
-@media(max-width:700px){.site-header{margin-top:-66px}.scroll-cue{bottom:90px;width:38px;height:38px}}
+@media(max-width:700px){.site-header{margin-top:0}.scroll-cue{bottom:30px;width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){.scroll-cue{animation:none}}
