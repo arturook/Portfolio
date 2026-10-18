@@ -114,3 +114,6 @@ nav{display:flex;gap:34px;font-size:12px;color:#ffffff}nav a:hover,.site-footer 
 
 .contact-intro{font-size:15px;line-height:1.7}
 @media(max-width:700px){.contact-intro{font-size:14px}}
+
+/* Niebla ocupa la primera posición de la cuadrícula, igual que los proyectos de vídeo. */
+.category-grid .project-card.project-card-niebla{grid-column:auto;width:100%;justify-self:stretch}
