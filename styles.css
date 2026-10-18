@@ -111,3 +111,6 @@ nav{display:flex;gap:34px;font-size:12px;color:#ffffff}nav a:hover,.site-footer 
 .contact-item:hover .contact-value{color:var(--red)}
 .contact-item:focus-visible{outline:2px solid #fff;outline-offset:4px}
 @media(max-width:700px){.contact-links{grid-template-columns:1fr;gap:8px}.contact-item{gap:8px;padding:14px 0}.contact-value{font-size:14px}}
+
+.contact-intro{font-size:15px;line-height:1.7}
+@media(max-width:700px){.contact-intro{font-size:14px}}
