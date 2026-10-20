@@ -98,3 +98,30 @@
     }
   });
 })();
+
+
+(() => {
+  const sectionIds = ["video", "fotografia", "sobre-mi", "contacto"];
+  const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+  const links = Array.from(document.querySelectorAll(".site-header nav a[href^='#']"));
+  if (!sections.length || !links.length || !("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries.filter((entry) => entry.isIntersecting);
+    if (!visible.length) return;
+    const active = visible.reduce((closest, entry) => {
+      const distance = Math.abs((entry.boundingClientRect.top + entry.boundingClientRect.bottom) / 2 - window.innerHeight / 2);
+      const closestDistance = Math.abs((closest.boundingClientRect.top + closest.boundingClientRect.bottom) / 2 - window.innerHeight / 2);
+      return distance < closestDistance ? entry : closest;
+    });
+    links.forEach((link) => {
+      if (link.getAttribute("href") === "#" + active.target.id) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }, { rootMargin: "-25% 0px -55% 0px", threshold: 0 });
+
+  sections.forEach((section) => observer.observe(section));
+})();
