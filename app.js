@@ -125,3 +125,77 @@
 
   sections.forEach((section) => observer.observe(section));
 })();
+
+
+(() => {
+  const dialog = document.querySelector("[data-video-lightbox]");
+  const player = dialog?.querySelector("[data-video-player]");
+  const youtube = dialog?.querySelector("[data-youtube-player]");
+  const title = dialog?.querySelector("[data-video-lightbox-title]");
+  const close = dialog?.querySelector("[data-video-lightbox-close]");
+  const triggers = Array.from(document.querySelectorAll("[data-video-viewer]"));
+  if (!dialog || !player || !youtube || !close || !triggers.length) return;
+
+  let lastTrigger = null;
+  const youtubeEmbed = (value) => {
+    try {
+      const url = new URL(value);
+      let id = "";
+      if (url.hostname === "youtu.be" || url.hostname.endsWith(".youtu.be")) {
+        id = url.pathname.split("/").filter(Boolean)[0] || "";
+      } else {
+        id = url.searchParams.get("v") || (url.pathname.match(/\/(?:embed|shorts|live)\/([^/?]+)/) || [])[1] || "";
+      }
+      return id ? "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0" : "";
+    } catch {
+      return "";
+    }
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      lastTrigger = trigger;
+      const card = trigger.closest(".project-card");
+      const projectVideo = card?.querySelector(".project-video");
+      const fallbackSource = projectVideo?.querySelector("source")?.src || projectVideo?.currentSrc || "";
+      const url = trigger.dataset.videoUrl || fallbackSource;
+      const embedUrl = youtubeEmbed(url);
+      if (!url) return;
+
+      title.textContent = trigger.dataset.videoTitle || "Vídeo del proyecto";
+      player.pause();
+      player.removeAttribute("src");
+      player.load();
+
+      if (embedUrl) {
+        player.hidden = true;
+        youtube.hidden = false;
+        youtube.src = embedUrl;
+      } else {
+        youtube.removeAttribute("src");
+        youtube.hidden = true;
+        player.src = url;
+        player.hidden = false;
+      }
+
+      dialog.showModal();
+      if (!embedUrl) player.play().catch(() => {});
+    });
+  });
+
+  const stopPlayback = () => {
+    player.pause();
+    player.removeAttribute("src");
+    player.load();
+    youtube.removeAttribute("src");
+    player.hidden = true;
+    youtube.hidden = true;
+    if (lastTrigger) lastTrigger.focus();
+  };
+
+  close.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener("close", stopPlayback);
+})();
