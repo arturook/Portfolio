@@ -42,46 +42,50 @@
         <div class="category-heading"><h3>Vídeo<span class="accent">.</span></h3></div>
         <div class="project-grid category-grid video-grid">
           <article class="project-card project-card-panoptico">
-            <div class="project-image image-one has-project-roles" tabindex="0">
+            <div class="project-image image-one has-project-roles has-video-viewer">
               <video class="project-video" autoplay muted loop preload="metadata" playsinline aria-label="Vídeo del proyecto Panóptico">
                 <source src="pano%CC%81ptico%20contenedor.mp4" type="video/mp4">
                 Tu navegador no puede reproducir este vídeo.
               </video>
               <span class="project-number">01</span>
               <div class="project-role-overlay"><span>Funciones</span><p>Dirección, guion, montaje, edición de sonido, etalonaje.</p></div>
-            </div>
+            
+              <button class="video-viewer-trigger" type="button" data-video-viewer data-video-title="Panóptico" aria-label="Ver vídeo de Panóptico"><span class="visually-hidden">Ver vídeo de Panóptico</span></button></div>
             <div class="project-info"><div><h3>Panóptico</h3></div></div>
           </article>
           <article class="project-card">
-            <div class="project-image image-two has-project-roles" tabindex="0">
+            <div class="project-image image-two has-project-roles has-video-viewer">
               <video class="project-video" autoplay muted loop preload="metadata" playsinline aria-label="Vídeo del proyecto Venturi - En los 90">
                 <source src="En%20los%2090%20-%20Venturi.mp4" type="video/mp4">
                 Tu navegador no puede reproducir este vídeo.
               </video>
               <span class="project-number">02</span>
               <div class="project-role-overlay"><span>Funciones</span><p>Etalonaje.</p></div>
-            </div>
+            
+              <button class="video-viewer-trigger" type="button" data-video-viewer data-video-title="Venturi - En los 90" aria-label="Ver vídeo de Venturi - En los 90"><span class="visually-hidden">Ver vídeo de Venturi - En los 90</span></button></div>
             <div class="project-info"><div><h3>Venturi - En los 90</h3></div></div>
           </article>
           <article class="project-card">
-            <div class="project-image image-three">
+            <div class="project-image image-three has-video-viewer">
               <video class="project-video" autoplay muted loop preload="metadata" playsinline aria-label="Vídeo del proyecto Londres">
                 <source src="londres.mp4" type="video/mp4">
                 Tu navegador no puede reproducir este vídeo.
               </video>
               <span class="project-number">03</span>
-            </div>
+            
+              <button class="video-viewer-trigger" type="button" data-video-viewer data-video-title="Londres" aria-label="Ver vídeo de Londres"><span class="visually-hidden">Ver vídeo de Londres</span></button></div>
             <div class="project-info"><div><h3>Londres</h3></div></div>
           </article>
           <article class="project-card">
-            <div class="project-image image-two has-project-roles" tabindex="0">
+            <div class="project-image image-two has-project-roles has-video-viewer">
               <video class="project-video" autoplay muted loop preload="metadata" playsinline aria-label="Vídeo del proyecto El Cuentacuentos">
                 <source src="El%20cuentacuentos%20portada.mp4" type="video/mp4">
                 Tu navegador no puede reproducir este vídeo.
               </video>
               <span class="project-number">04</span>
               <div class="project-role-overlay"><span>Funciones</span><p>Ayudante de dirección, guion, montaje, edición de sonido, etalonaje.</p></div>
-            </div>
+            
+              <button class="video-viewer-trigger" type="button" data-video-viewer data-video-title="El Cuentacuentos" aria-label="Ver vídeo de El Cuentacuentos"><span class="visually-hidden">Ver vídeo de El Cuentacuentos</span></button></div>
             <div class="project-info"><div><h3>El Cuentacuentos</h3></div></div>
           </article>
         </div>
@@ -157,6 +161,15 @@
       </div>
     </section>
   </main>
+
+    <dialog class="video-lightbox" data-video-lightbox aria-labelledby="video-lightbox-title">
+      <h2 class="visually-hidden" id="video-lightbox-title" data-video-lightbox-title></h2>
+      <button class="video-lightbox-close" type="button" data-video-lightbox-close aria-label="Cerrar visor">×</button>
+      <div class="video-lightbox-stage">
+        <video class="video-lightbox-player" data-video-player controls playsinline hidden></video>
+        <iframe class="video-lightbox-embed" data-youtube-player title="Reproductor de vídeo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen hidden></iframe>
+      </div>
+    </dialog>
 
   <footer class="site-footer"><a class="wordmark" href="#inicio">AGC<span>®</span></a><span>© 2026 Arturo Gómez Cáceres</span><a href="#inicio">Volver arriba ↑</a></footer>
   <script src="app.js?v=niebla-03" defer></script>
